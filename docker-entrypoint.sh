@@ -21,4 +21,7 @@ if [[ $? != 0 ]]; then
   bundle exec rake db:migrate
 fi
 
+# From the app/config/secret.yml file
+export SECRET_KEY_BASE=$(rake secret)
+
 bundle exec rails server -b 0.0.0.0
