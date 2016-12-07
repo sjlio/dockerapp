@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  user: app_user
+  password: password
+  # db: can be anything because the setup task will create the db we specify
+  db: app_database
+  pool: 5
+  # Host must match the alias created in the db function of the srcipt
+  host: postgres
