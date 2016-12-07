@@ -12,13 +12,13 @@ db() {
 
 # Create an app function, that will represent the docker container with the application
 app() {
-  # docker stop app
-  # docker rm app
-  # Docker run with the -p: for port with 3000 as the host port and 3000 as the private port.
+  docker stop app
+  docker rm app
+  # Docker run with the -p: for port with 80 as the host port and 80 as the private port.
   # The "--link app_db:postgres" link the application to the the app_db database, the postgres is the alias the containers.
   # If you run "docker build -t <tag-name> .", you can use the tag name whne linking or something else.
   # Use "sh script.sh app" to run the app function from the script.sh
-  docker run -p 3000:3000 --link app_db:postgres --name app sjl/app
+  docker run -p 80:80 --link app_db:postgres --name app sjl/app
 }
 
 # This the action to be called, which is the first argument.
