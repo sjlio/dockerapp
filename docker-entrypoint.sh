@@ -24,4 +24,11 @@ fi
 # From the app/config/secret.yml file
 export SECRET_KEY_BASE=$(rake secret)
 
-bundle exec rails server -b 0.0.0.0
+sudo rm /etc/nginx/sites-enabled/*
+sudo ln -s /home/app/nginx.conf /etc/nginx/sites-enabled/app.conf
+
+sudo service nginx start
+
+bundle exec rake assets:precompile
+
+bundle exec puma -e production -b unix:///home/app/puma.sock
