@@ -3,6 +3,11 @@ git clone --depth 1 https://github.com/sjlio/dockerapp app
 
 cd app
 
+source "/usr/local/share/chruby/chruby.sh"
+chruby ruby
+
+gem install bundler
+
 bundle install --without=development,test
 bundle exec rake db:migrate
 # Pick up on the status of the command above, if it return anything other than zero meaning that it has error
