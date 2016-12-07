@@ -3,6 +3,7 @@ git clone --depth 1 https://github.com/sjlio/dockerapp app
 
 cd app
 
+# If we make any change to the docker entry file, we should build the image again "docker build -t sjl/app ."
 source "/usr/local/share/chruby/chruby.sh"
 chruby ruby
 
@@ -20,4 +21,4 @@ if [[ $? != 0 ]]; then
   bundle exec rake db:migrate
 fi
 
-bundle exec rails server
+bundle exec rails server -b 0.0.0.0
